@@ -7,13 +7,13 @@ const Header = () => {
     <>
       <Stack
         flexDirection={"row"}
-        height={52}
+        // height={52}
         justifyContent={"space-around"}
         alignItems={"center"}
         position={"sticky"}
         top={0}
-        py={1}
-        pt={1}
+        // py={1}
+        // pt={1}
       >
         <img
           src="/Threads-logo-black-bg.webp"
@@ -26,7 +26,7 @@ const Header = () => {
           width={'550px'}
           bgcolor={"aliceblue"}
           zIndex={2}
-          height={96}
+          height={65}
         >
           <Navbar/>
         </Stack>
