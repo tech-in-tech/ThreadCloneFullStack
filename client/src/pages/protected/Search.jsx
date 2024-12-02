@@ -1,9 +1,26 @@
+import SearchInput from "../../components/search/SearchInput"
+import ProfileBar from "../../components/search/ProfileBar"
+import { Stack } from "@mui/material"
 
 const Search = () => {
   return (
-    <div>
-      This is search route
-    </div>
+    <>
+      <SearchInput />
+      <Stack
+        flexDirection={'column'}
+        gap={1}
+        mb={5}
+        width={"90%"}
+        maxWidth={"750px"}
+        mx={"auto"}
+        >
+        <ProfileBar />
+        <ProfileBar />
+        <ProfileBar />
+        <ProfileBar />
+      </Stack>
+
+    </>
   )
 }
 
