@@ -17,7 +17,7 @@ const Post = () => {
         sx={{
           ":hover": {
             cursor: "pointer",
-            boxShadow: "10px 10px 10px gray",
+            boxShadow: "2px 2px 10px gray",
           },
           transition: "all ease-in-out 0.3s",
         }}
