@@ -1,4 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+*{
+  margin: 0;
+  padding: 0;
+}
+.login-Link{
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+.Link{
+  text-decoration: none;
+  color: black;
+}
+.image-icon{
+  cursor: pointer;
 
+}
+.text1{
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  position: relative;
+  left: -10px;
+  color: gray;
+  font-size: 1rem;
+  margin: 20px;
+}
+.file_input{
+  display: none;
+
+}
+#url-image{
+  margin: 0 0 10px;
+}

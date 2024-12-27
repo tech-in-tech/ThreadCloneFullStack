@@ -1,7 +1,37 @@
-import { Stack, Typography, TextField, Button } from "@mui/material"
-import { Cursor } from "mongoose"
-import { TbH1 } from "react-icons/tb"
+import { Stack, Typography, TextField, Button, useMediaQuery } from "@mui/material"
+import { useState } from "react"
 const Register = () => {
+  const _700 = useMediaQuery("(min-width:700px)"); // use for page responsiveness
+
+  const [login, setLogin] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const toggleLogin = () => {
+    setLogin((pre) => !pre);
+  }
+  // handleLogin:handleRegister
+  const handleLogin = () => {
+    const data = {
+      email,
+      password
+    };
+    console.log(data);
+  }
+  const handleRegister = () => {
+    const data = {
+      username,
+      email,
+      password
+    };
+    console.log(data);
+
+  }
+
+
+
+
   return (
     <>
       <Stack
@@ -10,31 +40,44 @@ const Register = () => {
         flexDirection={"row"}
         justifyContent={"center"}
         alignItems={"center"}
-        sx={{
-          backgroundImage: 'url("/register-bg.webp")',
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 600px"
-        }}
+        sx={_700
+          ? {
+            backgroundImage: 'url("register-bg.webp")',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100% 600px"
+          } : null
+        }
       >
         <Stack
           flexDirection={"column"}
-          width={"40%"}
-          mt={20}
+          width={_700 ? "40%" : "90%"}
+          mt={_700 ? 20 : 0}
           gap={2}
         >
           <Typography
             variant="h5"
-            fontSize={"1.5rem"}
+            fontSize={_700?"1.5rem":"1rem"}
             fontWeight={"bold"}
             alignSelf={"center"}
           >
-            Login With Email
+            {login ? "Login with email" : "Register with email"}
           </Typography>
-          <TextField variant="outlined" placeholder="Enter your Username..." />
+          {
+            login ? null : (
+              <TextField
+                variant="outlined"
+                placeholder="Enter your Username"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            )
+          }
+          <TextField variant="outlined" placeholder="Enter your Email..."
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          <TextField variant="outlined" placeholder="Enter your Email..." />
-
-          <TextField variant="outlined" placeholder="Enter your Password..." />
+          <TextField variant="outlined" placeholder="Enter your Password..."
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <Button
             size="large"
@@ -46,19 +89,21 @@ const Register = () => {
               color: "White",
               fontSize: "1rem",
             }}
+            onClick={login ? handleLogin : handleRegister}
           >
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white">
-              Sign Up
+            <span className="absolute inset-0 flex items-center justify-center  text-white">
+              {login ? "Login" : "Signup"}
             </span>
-            <span className="group-hover:opacity-0 transition-opacity"></span>
+            {/* <span className="group-hover:opacity-0 transition-opacity"></span> */}
           </Button>
           <Typography
             variant="subtitle2"
-            fontSize={'1.3rem'}
+            fontSize={_700 ? "1.3rem" : '1'}
             alignSelf={"center"}
 
           >
-            Already have an account ? <span className="underline cursor-pointer text-blue-500">Login</span>
+            {login ? "Don't have an account" : "Already have an account"} <span className="underline cursor-pointer text-blue-500" onClick={toggleLogin}>{
+              login ? "Sign up" : "Login"}</span>
           </Typography>
         </Stack>
       </Stack >
